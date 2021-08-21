@@ -15,6 +15,7 @@ import { render } from "react-dom";
 // These other components are just presentational ones: they don't have any
 // logic. They just render HTML.
 import { NoWalletDetected } from "./NoWalletDetected";
+import { ConnectWallet } from "./ConnectWallet"
 
 // This is the Hardhat Network id, you might change it in the hardhat.config.js
 // Here's a list of network ids https://docs.metamask.io/guide/ethereum-provider.html#properties
@@ -40,8 +41,14 @@ export class Dapp extends React.Component{
   };
 
   render(){
-    return (<NoWalletDetected />);
-  }
+    // Ethereum wallets inject the window.ethereum object. If it hasn't been
+    // injected, we instruct the user to install MetaMask.
+    if (window.ethereum === undefined) {
+      return (<NoWalletDetected />);  
+    } else 
+    
+    return (<ConnectWallet />);
 
+  }
 };
 
