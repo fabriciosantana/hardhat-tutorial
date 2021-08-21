@@ -11,6 +11,11 @@ import TokenArtifact from "../contracts/Token.json";
 import contratAddress from "../contracts/contract-address.json";
 import { render } from "react-dom";
 
+// All the logic of this dapp is contained in the Dapp component.
+// These other components are just presentational ones: they don't have any
+// logic. They just render HTML.
+import { NoWalletDetected } from "./NoWalletDetected";
+
 // This is the Hardhat Network id, you might change it in the hardhat.config.js
 // Here's a list of network ids https://docs.metamask.io/guide/ethereum-provider.html#properties
 // to use when deploying to other networks.
@@ -35,7 +40,7 @@ export class Dapp extends React.Component{
   };
 
   render(){
-    return (<div>Hello World!</div>);
+    return (<NoWalletDetected />);
   }
 
 };
