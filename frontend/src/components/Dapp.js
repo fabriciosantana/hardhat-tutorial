@@ -38,6 +38,15 @@ const ERROR_CODE_TX_REJECTED_BY_USER = 4001;
 export class Dapp extends React.Component{
   constructor(props){
     super(props);
+
+    this.initialState ={
+
+      selectedAddress: undefined,
+      
+      networtError: undefined
+    };
+
+    this.state = this.initialState;
   };
 
   render(){
@@ -47,8 +56,25 @@ export class Dapp extends React.Component{
       return (<NoWalletDetected />);  
     } else 
     
-    return (<ConnectWallet />);
+    if (!this.state.selectedAddress){
+      return (
+        <ConnectWallet
+          connectWallet={() => this._connectWallet()}
+          networtError={this.state.networtError}
+          dismiss={() => this._dismissNetWorkError()}
+        />
+      );
+    };
+  };
 
+  async _connectWallet(){
+    return window.alert("This function will connect to Ethereum Wallet.");
+  };
+
+  // This method just clears part of the state.
+  async _dismissNetWorkError(){
+    this.state({ networtError: undefined });
   }
+
 };
 
