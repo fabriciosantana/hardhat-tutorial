@@ -1,6 +1,11 @@
 require("@nomiclabs/hardhat-waffle");
-const dotenv = require("dotenv");
 
+//tasks
+require("./tasks/faucet");
+require("./tasks/balance");
+require("./tasks/accounts");
+
+const dotenv = require("dotenv");
 dotenv.config();
 
 /**
