@@ -16,6 +16,7 @@ import { render } from "react-dom";
 // logic. They just render HTML.
 import { NoWalletDetected } from "./NoWalletDetected";
 import { ConnectWallet } from "./ConnectWallet"
+import { Loading } from "./Loading";
 
 // This is the Hardhat Network id, you might change it in the hardhat.config.js
 // Here's a list of network ids https://docs.metamask.io/guide/ethereum-provider.html#properties
@@ -40,8 +41,11 @@ export class Dapp extends React.Component{
     super(props);
 
     this.initialState ={
-
+      // The info of the token (i.e. It's Name and symbol)
+      tokenData: undefined,
+      // The user's address and balance
       selectedAddress: undefined,
+      balance: undefined,
       
       networtError: undefined
     };
@@ -65,6 +69,13 @@ export class Dapp extends React.Component{
         />
       );
     };
+
+    // If the token data or the user's balance hasn't loaded yet, we show
+    // a loading component.
+    if (!this.state.tokenData || !this.state.balance) {
+      return <Loading />;
+    }
+
   };
 
   async _connectWallet(){
