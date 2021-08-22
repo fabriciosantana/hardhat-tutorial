@@ -11,7 +11,7 @@ export function NoWalletDetected(){
                     <a 
                         href="http://metamask.io"
                         target="_blank"
-                        rel="test" >
+                        rel="noreferrer" >
                             Metamask
                     </a>
                     .
