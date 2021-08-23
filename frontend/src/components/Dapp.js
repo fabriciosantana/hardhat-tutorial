@@ -181,7 +181,7 @@ export class Dapp extends React.Component{
     });
     
     // We reset the dapp state if the network is changed
-    window.ethereum.on("chainChanged", ([networkId]) => {
+    window.ethereum.on("networkChanged", ([networkId]) => {
       this._stopPollingData();
       this._resetState();
     });
